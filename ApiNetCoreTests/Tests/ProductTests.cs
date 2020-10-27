@@ -41,7 +41,7 @@ namespace ApiNetCoreTests.Tests
         [SetUp]
         public void Setup() { }
 
-        [TestCase(TestName = "Controller Should Return a Product")]
+        [TestCase(TestName = "Controller Should Return a Product ")]
         public async Task Controller_Should_Return_a_Product()
         {
             // Arrange
