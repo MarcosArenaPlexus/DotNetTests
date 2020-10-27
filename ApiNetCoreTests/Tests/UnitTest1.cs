@@ -14,7 +14,7 @@ namespace ApiNetCoreTests.Tests
             //_getServiceNameService = new GetServiceNameService();
         }
 
-        [TestCase(TestName = "Should return 'Hello world!'")]
+        [TestCase(TestName = "Should return 'Hello world! '")]
         public void Should_return_Hello_world()
         {
             var getServiceNameServiceMock = new Mock<IGetServiceNameService>();
