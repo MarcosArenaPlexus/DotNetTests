@@ -4,15 +4,8 @@ using NUnit.Framework;
 
 namespace ApiNetCoreTests.Tests
 {
-    public class Tests
+    public class HelloWorldTest
     {
-        //private IGetServiceNameService _getServiceNameService;
-
-        [SetUp]
-        public void Setup()
-        {
-            //_getServiceNameService = new GetServiceNameService();
-        }
 
         [TestCase(TestName = "Should return 'Hello world! '")]
         public void Should_return_Hello_world()
@@ -22,8 +15,6 @@ namespace ApiNetCoreTests.Tests
             getServiceNameServiceMock.Setup(p => p.GetServiceName()).Returns("Hello world!");
 
             Assert.AreEqual(getServiceNameServiceMock.Object.GetServiceName(), "Hello world!");
-
-            //Assert.AreEqual(_getServiceNameService.getServiceName(), "Hello world!");
         }
     }
 }

@@ -14,7 +14,6 @@ namespace ApiNetCore.Repositories.Product
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly IConfiguration configuration;
         private readonly ApiNetCoreContext context;
 
         public ProductRepository(ApiNetCoreContext context)

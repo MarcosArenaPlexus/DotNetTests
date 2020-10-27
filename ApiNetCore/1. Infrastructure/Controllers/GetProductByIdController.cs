@@ -11,7 +11,6 @@ namespace ApiNetCore.Controllers
     [Route("[controller]")]
     public class GetProductByIdController : ControllerBase
     {
-        private readonly ILogger<GetProductByIdController> _logger;
         private readonly IGetProductByIdService _getProductByIdService;
 
         public GetProductByIdController(IGetProductByIdService getProductByIdService)
@@ -24,7 +23,7 @@ namespace ApiNetCore.Controllers
         {
             var product = await _getProductByIdService.GetProductByIdAsync(id);
 
-            if (product == null)
+            if (product == null)              
                 return NotFound();
 
             return product;
