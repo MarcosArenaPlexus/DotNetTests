@@ -1,5 +1,7 @@
 ﻿using ApiNetCore.Domain.Modules.Product.Entities;
 using ApiNetCore.Dtos.Product;
+using System;
+using System.Collections.Generic;
 
 namespace ApiNetCore.Converters
 {
@@ -33,6 +35,18 @@ namespace ApiNetCore.Converters
             else
                 return null;
 
+        }
+
+        internal IEnumerable<ProductDto> ToDtos(IEnumerable<Product> products)
+        {
+            var result = new List<ProductDto>();
+
+            foreach (var p in products)
+            {
+                result.Add(ToDto(p));
+            }
+
+            return result;
         }
     }
 }

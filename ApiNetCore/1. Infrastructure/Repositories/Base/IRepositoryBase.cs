@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ApiNetCore.Repositories
+namespace ApiNetCore.Repositories.Base
 {
     public interface IRepositoryBase<T> where T : class
     {

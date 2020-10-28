@@ -23,6 +23,7 @@ namespace ApiNetCoreTests.Tests
         private readonly ApiNetCoreContext context;
         private readonly IProductRepository dataRepository;
         private readonly GetProductByIdService getProductByIdService;
+        private readonly GetAllProductsService getAllProductsService;
 
         private readonly Guid nonExistingId = new Guid("db2287f6-ac18-4fd6-bfd8-d8e1ed1985a6");
         private readonly Guid existingId = new Guid("db2207f6-ac18-4fd6-bfd8-d8e1ed1985a6");
@@ -37,6 +38,8 @@ namespace ApiNetCoreTests.Tests
             this.dataRepository = new ProductRepository(this.context);
 
             this.getProductByIdService = new GetProductByIdService(this.dataRepository);
+
+            this.getAllProductsService = new GetAllProductsService(this.dataRepository);
 
             this.InitData();
         }
@@ -85,6 +88,26 @@ namespace ApiNetCoreTests.Tests
             var result = await this.dataRepository.GetProductById(nonExistingId);
 
             Assert.IsNull(result);
+        }
+        
+        [TestCase(TestName = "Repository Should return ALL products")]
+        public async Task Product_Repository_Should_Return_ALL_Products()
+        {
+            var result = await this.dataRepository.GetAllProducts();
+
+            Assert.IsNotEmpty(result);
+        }
+
+        [TestCase(TestName = "Controller Should Return All Products ")]
+        public async Task Controller_Should_Return_All_Product()
+        {
+            GetAllProductsController controller = new GetAllProductsController(this.getAllProductsService);
+
+            var result = await controller.GetAllProducts();
+
+            Assert.IsNotNull(result.Value);
+
+            Assert.IsNotEmpty(result.Value);
         }
 
         private void InitData()
